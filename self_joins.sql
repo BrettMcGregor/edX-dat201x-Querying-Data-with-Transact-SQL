@@ -12,7 +12,7 @@ INSERT INTO SalesLT.Employee2 (EmployeeName, ManagerID)
 SELECT DISTINCT Salesperson, NULLIF(CAST(RIGHT(SalesPerson, 1) AS INT), 0)
 FROM SalesLT.Customer;
 GO
-UPDATE SalesLT.Employee
+UPDATE SalesLT.Employee2
 SET ManagerID = (SELECT MIN(EmployeeID) FROM SalesLT.Employee2 WHERE ManagerID IS NULL)
 WHERE ManagerID IS NULL
 AND EmployeeID > (SELECT MIN(EmployeeID) FROM SalesLT.Employee2 WHERE ManagerID IS NULL);
